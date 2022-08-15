@@ -1,0 +1,1 @@
+python utils/data_prepare_S3DIS.py --data_dir="/home/y/LongguangWang/Data/S3DIS"

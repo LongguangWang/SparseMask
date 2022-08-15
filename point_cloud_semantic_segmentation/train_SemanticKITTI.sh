@@ -1,0 +1,1 @@
+python train_SemanticKITTI.py --data_dir="/home/y/LongguangWang/Data/SemanticKITTI/sequences_0.06"

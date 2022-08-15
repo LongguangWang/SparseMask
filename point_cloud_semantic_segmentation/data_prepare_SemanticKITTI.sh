@@ -1,0 +1,1 @@
+python utils/data_prepare_SemanticKITTI.py --data_dir="/home/y/LongguangWang/Data/SemanticKITTI"
