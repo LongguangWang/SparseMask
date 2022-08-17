@@ -8,7 +8,7 @@ Pytorch implementation of "Exploring Fine-Grained Sparsity in Convolutional Neur
 <p align="center"> <img src="figs/brain.png" width="40%"> </p>
 
 - Feature sparsity in CNNs 
-<p align="center"> <img src="figs/sparsity.png" width="80%"> </p>
+<p align="center"> <img src="figs/sparsity.png" width="85%"> </p>
 
 
 ## Overview
@@ -17,7 +17,7 @@ Pytorch implementation of "Exploring Fine-Grained Sparsity in Convolutional Neur
 <p align="center"> <img src="figs/SM_generation.png" width="70%"> </p>
 
 - Sparse Mask Convolution
-<p align="center"> <img src="figs/SM_conv.png" width="100%"> </p>
+<p align="center"> <img src="figs/SM_conv.png" width="80%"> </p>
 
 
 ## Applications
