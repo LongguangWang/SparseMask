@@ -1,4 +1,4 @@
-import time, os, warnings
+import time, os, warnings, copy
 import torch
 import torch.nn as nn
 from utils.metrics import accuracy, intersection_over_union, Evalulator
@@ -10,10 +10,13 @@ warnings.filterwarnings("ignore")
 
 
 def evaluate(args, model, loader, criterion, log_file):
-    model.eval()
+    model_cpoy = copy.deepcopy(model)
+    model_cpoy.eval()
+    for m in model_cpoy.module.encoder:
+        if hasattr(m, '_prepare'):
+            m._prepare()
 
     losses = []
-    sparsity_list = []
     evaluator = Evalulator(args.n_classes)
     time_val = time.time()
 
@@ -28,8 +31,7 @@ def evaluate(args, model, loader, criterion, log_file):
             neighbor_idx = [idx.cuda() for idx in neighbor_idx]
 
             # inference
-            scores, sparsity = model([points, neighbor_idx])
-            sparsity_list.append(sparsity)
+            scores = model_cpoy([points, neighbor_idx])
 
             # losses
             loss = criterion(scores, labels)
@@ -42,7 +44,6 @@ def evaluate(args, model, loader, criterion, log_file):
             if i % args.val_steps == 0:
                 time_val = time.time() - time_val
 
-                log_file.write(f'\nTest Sparsity: {torch.stack(sparsity_list).mean().data.cpu().item(): .2f}')
                 log_file.write('Test Time:  ' + '{:.0f} s'.format(time_val))
                 mean_iou, iou_list, mean_acc, acc_list, OA = evaluator.compute()
                 acc_list.append(float(mean_acc))

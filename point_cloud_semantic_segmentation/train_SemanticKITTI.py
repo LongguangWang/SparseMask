@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-import warnings, os, time
+import warnings, os, time, copy
 from utils.metrics import accuracy, intersection_over_union, Evalulator
 from model.SMPointSeg import SMPointSeg
 from utils.option_SemanticKITTI import args
@@ -10,9 +10,13 @@ warnings.filterwarnings("ignore")
 
 
 def evaluate(args, model, loader, criterion, log_file):
-    model.eval()
+    model_cpoy = copy.deepcopy(model)
+    model_cpoy.eval()
+    for m in model_cpoy.module.encoder:
+        if hasattr(m, '_prepare'):
+            m._prepare()
+
     losses = []
-    sparsity_list = []
     evaluator = Evalulator(args.n_classes)
     time_val = time.time()
 
@@ -27,8 +31,7 @@ def evaluate(args, model, loader, criterion, log_file):
             neighbor_idx = [idx.cuda() for idx in neighbor_idx]
 
             # inference
-            scores, sparsity = model([points, neighbor_idx])
-            sparsity_list.append(sparsity)
+            scores = model_cpoy([points, neighbor_idx])
 
             # losses
             loss = criterion(scores, labels)
@@ -41,7 +44,6 @@ def evaluate(args, model, loader, criterion, log_file):
             if i % args.val_steps == 0:
                 time_val = time.time() - time_val
 
-                log_file.write(f'Test Sparsity: {torch.stack(sparsity_list).mean().data.cpu().item(): .2f}')
                 log_file.write('Test Time:  ' + '{:.0f} s'.format(time_val))
                 mean_iou, iou_list, mean_acc, acc_list, OA = evaluator.compute()
                 acc_list.append(float(mean_acc))
@@ -65,6 +67,8 @@ def train(args, log_file):
                        n_neighbors=args.n_neighbors,
                        radius=0.1).cuda()
     model = nn.DataParallel(model, range(args.n_gpus))
+    ckpt = torch.load('runs/SemanticKITTI/SemanticKITTI.pth')
+    model.load_state_dict(ckpt)
 
     # loss
     class_weights = torch.tensor(args.class_weights, dtype=torch.float).cuda()
