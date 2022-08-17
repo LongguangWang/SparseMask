@@ -4,9 +4,6 @@
 
 <p align="center"> <img src="../figs/SMPointSeg.png" width="80%"> </p>
 
-## Requirements
-
-
 ## Setup
 ### 1. Clone this repository
 ```shell
