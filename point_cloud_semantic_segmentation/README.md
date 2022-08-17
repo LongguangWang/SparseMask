@@ -2,7 +2,7 @@
 
 ## Network Architecture
 
-<p align="center"> <img src="figs/SMPointSeg.png" width="100%"> </p>
+<p align="center"> <img src="../figs/SMPointSeg.png" width="100%"> </p>
 
 ## Requirements
 - cuda == 11.1
