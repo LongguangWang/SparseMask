@@ -48,7 +48,7 @@ Run `sh 6_fold_S3DIS.sh`. Please update `data_dir` in the bash file as `your_dir
 
 ## SemanticKITTI
 ### 1. Prepare training data 
-1.1 Download [the SemanticKITTI dataset](http://semantic-kitti.org/dataset.html#download) (files related to semantic segmentation) dataset and uncompress it to `your_dir_SemanticKITTI`.
+1.1 Download [the SemanticKITTI dataset](http://semantic-kitti.org/dataset.html#download) (files related to semantic segmentation) and uncompress it to `your_dir_SemanticKITTI`.
 
 1.2 Run `sh data_prepare_SematicKITTI.sh` to prepare training data. Generated data will be stored in `your_dir_SemanticKITTI_sequences_0.06`. Please update `data_dir` in the bash file as `your_dir_SemanticKITTI`.
 
