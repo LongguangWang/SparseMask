@@ -5,20 +5,30 @@
 <p align="center"> <img src="../figs/SMPointSeg.png" width="80%"> </p>
 
 ## Requirements
+
+
+## Setup
+### 1. Clone this repository
+```shell
+git clone https://github.com/LongguangWang/SparseMask && cd SparseMask
+```
+
+### 2. Install the following pacages
 - cuda == 11.1
 - PyTorch == 1.8.0
 - prefetch_generator == 1.0.1
 - numpy == 1.19.5
 - open3d == 0.12.0
 - scikit-learn == 0.24.2
-- pandas == 1.2.4
+- pandas == 1.2.4 
+Our code is tested with the above environments.
 
-## Setup
+### 3. Install the required operations.
 Run `sh compile_op.sh` to install required opeartions.
 
 ## S3DIS
 ### 1. Prepare training data 
-1.1 Download [the S3DIS datset](https://data.vision.ee.ethz.ch/cvl/DIV2K/) (Stanford3dDataset_v1.2_Aligned_Version.zip) and uncompress it to `your_dir_S3DIS`.
+1.1 Download [the S3DIS datset](https://docs.google.com/forms/d/e/1FAIpQLScDimvNMCGhy_rmBA2gHfDu3naktRm6A8BPwAWWDv-Uhm6Shw/viewform?c=0&w=1) (Stanford3dDataset_v1.2_Aligned_Version.zip) and uncompress it to `your_dir_S3DIS`.
 
 1.2 Run `sh data_prepare_S3DIS.sh` to prepare training data. Generated data will be stored in `your_dir_S3DIS_original` and `your_dir_S3DIS_sub0.040`. Please update `data_dir` in the bash file as `your_dir_S3DIS`.
 
