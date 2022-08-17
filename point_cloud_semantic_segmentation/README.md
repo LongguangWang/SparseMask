@@ -2,7 +2,7 @@
 
 ## Network Architecture
 
-<p align="center"> <img src="../figs/SMPointSeg.png" width="100%"> </p>
+<p align="center"> <img src="../figs/SMPointSeg.png" width="80%"> </p>
 
 ## Requirements
 - cuda == 11.1
@@ -32,10 +32,10 @@ Run `sh inference_S3DIS.sh`. Please update `data_dir` in the bash file as `your_
 Run `sh 6_fold_S3DIS.sh`. Please update `data_dir` in the bash file as `your_dir_S3DIS_original`.
 
 - Quantitative Results
-<p align="center"> <img src="figs/results_pc_1.png" width="100%"> </p>
+<p align="center"> <img src="../figs/results_pc_1.png" width="80%"> </p>
 
 - Visual Results
-<p align="center"> <img src="figs/results_pc_2.png" width="100%"> </p>
+<p align="center"> <img src="../figs/results_pc_2.png" width="80%"> </p>
 
 
 ## SemanticKITTI
@@ -51,10 +51,10 @@ Run `sh train_SematicKITTI.sh`. Please update `data_dir` in the bash file as `yo
 Run `sh inference_SematicKITTI.sh`. Please update `data_dir` in the bash file as `your_dir_SemanticKITTI_sequences_0.06`.
 
 - Quantitative Results
-<p align="center"> <img src="figs/results_pc_3.png" width="100%"> </p>
+<p align="center"> <img src="../figs/results_pc_3.png" width="80%"> </p>
 
 - Visual Results
-<p align="center"> <img src="figs/results_pc_4.png" width="100%"> </p>
+<p align="center"> <img src="../figs/results_pc_4.png" width="80%"> </p>
 
 ## Citation
 ```
