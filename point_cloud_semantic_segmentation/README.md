@@ -18,6 +18,7 @@ git clone https://github.com/LongguangWang/SparseMask && cd SparseMask
 - open3d == 0.12.0
 - scikit-learn == 0.24.2
 - pandas == 1.2.4 
+
 Our code is tested with the above environments.
 
 ### 3. Install the required operations.
