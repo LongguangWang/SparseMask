@@ -21,7 +21,7 @@ git clone https://github.com/LongguangWang/SparseMask && cd SparseMask
 
 Our code is tested with the above environments.
 
-### 3. Install the required operations.
+### 3. Install the required operations
 Run `sh compile_op.sh` to install required opeartions.
 
 ## S3DIS
