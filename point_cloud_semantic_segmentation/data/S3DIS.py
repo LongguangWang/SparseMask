@@ -262,11 +262,11 @@ class ActiveLearningSampler(IterableDataset):
             up_idx_5 = torch.from_numpy(up_idx_5).long()
 
             if self.dataset.training:
-                yield queried_pc, queried_pc_labels, \
+                yield queried_pc.T, queried_pc_labels, \
                       [neighbor_idx_1, neighbor_idx_2, neighbor_idx_3, neighbor_idx_4, neighbor_idx_5,
                        up_idx_2, up_idx_3, up_idx_4, up_idx_5]
             else:
-                yield queried_pc, queried_pc_labels, \
+                yield queried_pc.T, queried_pc_labels, \
                       [neighbor_idx_1, neighbor_idx_2, neighbor_idx_3, neighbor_idx_4, neighbor_idx_5,
                        up_idx_2, up_idx_3, up_idx_4, up_idx_5], \
                       cloud_idx, queried_idx
