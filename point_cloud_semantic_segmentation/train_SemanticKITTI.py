@@ -67,8 +67,6 @@ def train(args, log_file):
                        n_neighbors=args.n_neighbors,
                        radius=0.1).cuda()
     model = nn.DataParallel(model, range(args.n_gpus))
-    ckpt = torch.load('runs/SemanticKITTI/SemanticKITTI.pth')
-    model.load_state_dict(ckpt)
 
     # loss
     class_weights = torch.tensor(args.class_weights, dtype=torch.float).cuda()
