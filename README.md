@@ -5,7 +5,7 @@ Pytorch implementation of "Exploring Fine-Grained Sparsity in Convolutional Neur
 
 ## Motivation
 - Connection between the sparsity in human brains and the sparsity in CNNs
-<p align="center"> <img src="figs/brain.png" width="60%"> </p>
+<p align="center"> <img src="figs/brain.png" width="50%"> </p>
 
 - Feature sparsity in CNNs 
 <p align="center"> <img src="figs/sparsity.png" width="100%"> </p>
@@ -14,7 +14,7 @@ Pytorch implementation of "Exploring Fine-Grained Sparsity in Convolutional Neur
 ## Overview
 
 - Sparse Mask Generation
-<p align="center"> <img src="figs/SM_generation.png" width="100%"> </p>
+<p align="center"> <img src="figs/SM_generation.png" width="70%"> </p>
 
 - Sparse Mask Convolution
 <p align="center"> <img src="figs/SM_conv.png" width="100%"> </p>
