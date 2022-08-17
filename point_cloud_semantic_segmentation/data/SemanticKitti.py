@@ -52,8 +52,6 @@ class dataset_SemanticKITTI(Dataset):
         self.path = args.data_dir
         self.ignored_labels = np.sort([0])
 
-        self.val_split = '08'
-
         self.train_list, self.val_list, self.test_list = DP.get_file_list(self.path, args.test_id)
 
         if mode == 'training':
@@ -260,7 +258,7 @@ class ActiveLearningSampler(IterableDataset):
             up_idx_5 = knn(xyz_2, xyz_1, 1, omp=True).astype(np.int32)
             up_idx_5 = torch.from_numpy(up_idx_5).long()
 
-            if self.dataset.mode == 'training':
+            if self.dataset.mode == 'training' or 'validation':
                 yield queried_pc.T, queried_pc_labels, \
                       [neighbor_idx_1, neighbor_idx_2, neighbor_idx_3, neighbor_idx_4,
                        up_idx_3, up_idx_4, up_idx_5]
