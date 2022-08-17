@@ -13,7 +13,7 @@ data = parser.add_argument_group('Dataset')
 base.add_argument('--dataset', type=str, default='SemanticKITTI')
 base.add_argument('--data_dir', type=str, help='location of the dataset',
                   default='/home/y/LongguangWang/Data/SemanticKITTI/sequences_0.06')
-expr.add_argument('--test_id', type=str, help='Index of the Test Area', default='21')
+expr.add_argument('--test_id', type=str, help='Index of the Test Area', default='14')
 
 expr.add_argument('--epochs', type=int, help='number of epochs', default=100)
 expr.add_argument('--resume', type=int, help='model to load', default=0)
@@ -24,7 +24,7 @@ expr.add_argument('--augment_noise', type=float, help='model to load', default=0
 
 param.add_argument('--lr', type=float, help='learning rate of the optimizer', default=1e-2)
 param.add_argument('--batch_size', type=int, help='batch size', default=10)
-param.add_argument('--val_batch_size', type=int, help='batch size', default=6)
+param.add_argument('--val_batch_size', type=int, help='batch size', default=10)
 param.add_argument('--n_neighbors', type=int, help='number of neighbors considered by k-NN', default=16)
 param.add_argument('--gamma', type=float, help='gamma of the learning rate scheduler', default=0.95)
 
