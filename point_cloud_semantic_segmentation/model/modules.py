@@ -102,7 +102,7 @@ class PointConv_SM(nn.Module):
                 neighbor_fea_s = fea_sparse.unsqueeze(-2)
 
             b, c, k, n = neighbor_fea_s.shape
-            fea_s2ds = self.conv_1x1_s2ds(neighbor_fea_s.view(b, c, -1)).view(b, -1, k, n)
+            fea_s2ds = self.conv_1x1_s2ds(neighbor_fea_s.reshape(b, c, -1)).view(b, -1, k, n)
 
         # fusion
         if self.d_out_num > 0:
@@ -193,7 +193,7 @@ def batch_gather(x, knn_idx, mode='plain'):
 
     if mode == 'residual':
         idx = torch.arange(b).to(x.device).view(-1, 1, 1).expand(-1, n, k-1)
-        center = x[..., :n].unsqueeze(2)
-        out = torch.cat([center, x[idx, :, knn_idx[..., 1:]].permute(0, 3, 2, 1)-center], 2)
+        center = x[idx[..., 0:1], ..., knn_idx[..., 0:1]]
+        out = torch.cat([center, x[idx, :, knn_idx[..., 1:]] - center], 2).permute(0, 3, 2, 1)
 
     return out

@@ -216,8 +216,6 @@ class BasicBlock(nn.Module):
             pt_mask = self.pt_mask[1]([sample_xyz, rel_xyz, pt_mask, knn_idx])
             pt_mask = self.pt_mask[2]([sample_xyz, rel_xyz, pt_mask, knn_idx])
             pt_mask = (pt_mask / self.tau).softmax(1)[:, 1:, :]
-            ch_mask = (self.ch_mask / self.tau).softmax(-1)
-            pt_mask_clone = pt_mask.clone()
 
             idx_mask, knn_idx_s = self._generate_indices(pt_mask, knn_idx)
 
@@ -228,8 +226,7 @@ class BasicBlock(nn.Module):
             fea_s = None
             knn_idx_d = knn_idx
             for i in range(self.n_layers):
-                fea_d, fea_s = self.body[i]([sample_xyz, rel_xyz, fea_d, fea_s, idx_mask, knn_idx_d, knn_idx_s,
-                                             pt_mask_clone, ch_mask[i:i + 1, ...]])
+                fea_d, fea_s = self.body[i]([sample_xyz, rel_xyz, fea_d, fea_s, idx_mask, knn_idx_d, knn_idx_s])
                 buffer_d.append(fea_d)
                 buffer_s.append(fea_s)
 
