@@ -5,10 +5,10 @@ Pytorch implementation of "Exploring Fine-Grained Sparsity in Convolutional Neur
 
 ## Motivation
 - Connection between the sparsity in human brains and the sparsity in CNNs
-<p align="center"> <img src="figs/brain.png" width="50%"> </p>
+<p align="center"> <img src="figs/brain.png" width="40%"> </p>
 
 - Feature sparsity in CNNs 
-<p align="center"> <img src="figs/sparsity.png" width="100%"> </p>
+<p align="center"> <img src="figs/sparsity.png" width="80%"> </p>
 
 
 ## Overview
