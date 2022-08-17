@@ -45,8 +45,9 @@ def test():
     test_loader = data_loaders(test_dataset, args, batch_size=args.val_batch_size, num_workers=args.n_workers,
                                drop_last=True)
 
-    ckpt = torch.load('runs/SemanticKITTI/epoch_100.pth')['model_state_dict']
-    model.load_state_dict(ckpt, strict=True)
+    ckpt = torch.load('runs/SemanticKITTI/epoch_100.pth')
+    # ckpt = torch.load('runs/SemanticKITTI/SemanticKITTI.pth')   # use pre-trained models
+    model.load_state_dict(ckpt, strict=False)
 
     # evaluation mode
     model.eval()
@@ -62,13 +63,19 @@ def test():
 
     with torch.no_grad():
         while test_dataset.min_possibility.min().item() < 0.5:
-            for points, labels, neighbor_idx, cloud_idx, point_idx in tqdm(test_loader, desc=args.mode, leave=False):
+            for points, labels, neighbor_idx, cloud_idx, point_idx in tqdm(test_loader, desc='Test', leave=False):
                 points = points.cuda()
                 neighbor_idx = [idx.cuda() for idx in neighbor_idx]
 
                 # inference
-                stacked_probs, _ = model([points, neighbor_idx])
+                stacked_probs = model([points, neighbor_idx])
                 stacked_probs = stacked_probs.softmax(1)
+
+                # visualization
+                color = Plot.random_colors(19)
+                predictions = torch.max(stacked_probs, dim=-2)[1]
+                Plot.draw_pc_sem_ins(points.permute(0, 2, 1)[0, :, :3].data.cpu(), predictions[0, :].data.cpu(), color)
+
                 stacked_probs = stacked_probs.data.cpu().numpy()
                 stacked_probs = np.transpose(stacked_probs, (0, 2, 1))
                 cloud_idx = cloud_idx.data.cpu().numpy()

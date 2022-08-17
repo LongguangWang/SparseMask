@@ -20,13 +20,13 @@ Run `sh compile_op.sh` to install required opeartions.
 ### 1. Prepare training data 
 1.1 Download [the S3DIS datset](https://data.vision.ee.ethz.ch/cvl/DIV2K/) (Stanford3dDataset_v1.2_Aligned_Version.zip) and uncompress it to `your_dir_S3DIS`.
 
-1.2 Run `sh data_prepare_S3DIS.sh` to prepare training data. Generated data will be stored in `your_dir_S3DIS_original` and `your_dir_S3DIS_sub0.04`. Please update `data_dir` in the bash file as `your_dir_S3DIS`.
+1.2 Run `sh data_prepare_S3DIS.sh` to prepare training data. Generated data will be stored in `your_dir_S3DIS_original` and `your_dir_S3DIS_sub0.040`. Please update `data_dir` in the bash file as `your_dir_S3DIS`.
 
 ### 2. Begin to train
-Run `sh train_S3DIS.sh`. Please update `data_dir` in the bash file as `your_dir_S3DIS_sub0.04`.
+Run `sh train_S3DIS.sh`. Please update `data_dir` in the bash file as `your_dir_S3DIS_sub0.040`.
 
 ### 3. Begin to test
-Run `sh inference_S3DIS.sh`. Please update `data_dir` in the bash file as `your_dir_S3DIS_sub0.04`.
+Run `sh inference_S3DIS.sh`. Please update `data_dir` in the bash file as `your_dir_S3DIS_sub0.040`.
 
 ### 4. 6-fold cross validation
 Run `sh 6_fold_S3DIS.sh`. Please update `data_dir` in the bash file as `your_dir_S3DIS_original`.

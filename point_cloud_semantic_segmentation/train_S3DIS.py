@@ -191,8 +191,6 @@ def train(args, log_file):
 
 
 if __name__ == '__main__':
-    os.environ['CUDA_VISIBLE_DEVICES'] = '2'
-
     log_file = checkpoint(args)
 
     t0 = time.time()

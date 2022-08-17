@@ -18,7 +18,7 @@ torch.backends.cudnn.benchmark = True
 
 
 def test():
-    print('######### Test Area ' + str(args.test_id) + ' #########')
+    print('######### Test Area ' + str(args.idx_test_area) + ' #########')
 
     model = SMPointSeg(args.d_in, args.n_classes,
                        channels=[32, 64, 128, 256, 512],
@@ -29,9 +29,10 @@ def test():
     val_dataset = dataset_S3DIS(args, training=False)
     val_loader = data_loaders(val_dataset, args, batch_size=args.val_batch_size, num_workers=args.n_workers,
                               drop_last=True)
-
-    ckpt = torch.load('runs/S3DIS/Area' + str(args.idx_test_area) + '/epoch_100.pth')['model_state_dict']
-    model.load_state_dict(ckpt, strict=True)
+    
+    ckpt = torch.load('runs/S3DIS/Area'+str(args.idx_test_area)+'/epoch_100.pth')
+    # ckpt = torch.load('runs/S3DIS/Area'+str(args.idx_test_area)+'.pth')   # use pre-trained models
+    model.load_state_dict(ckpt, strict=False)
 
     # evaluation mode
     model.eval()
@@ -53,13 +54,19 @@ def test():
 
     with torch.no_grad():
         while last_min < num_votes:
-            for points, labels, neighbor_idx, cloud_idx, point_idx in tqdm(val_loader, desc='Validation', leave=False):
-                points = points.cuda().transpose(-1, -2)
+            for points, labels, neighbor_idx, cloud_idx, point_idx in tqdm(val_loader, desc='Test', leave=False):
+                points = points.cuda()
                 neighbor_idx = [idx.cuda() for idx in neighbor_idx]
 
                 # inference
-                stacked_probs, _ = model([points, neighbor_idx])
+                stacked_probs = model([points, neighbor_idx])
                 stacked_probs = stacked_probs.softmax(1)
+
+                # visualization
+                color = Plot.random_colors(13)
+                predictions = torch.max(stacked_probs, dim=-2)[1]
+                Plot.draw_pc_sem_ins(points.permute(0, 2, 1)[0, :, :3].data.cpu(), predictions[0, :].data.cpu(), color)
+
                 stacked_probs = stacked_probs.data.cpu().numpy()
                 stacked_probs = np.transpose(stacked_probs, (0, 2, 1))
                 cloud_idx = cloud_idx.data.cpu().numpy()
