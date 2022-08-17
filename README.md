@@ -24,12 +24,12 @@ Pytorch implementation of "Exploring Fine-Grained Sparsity in Convolutional Neur
 ### 1. Point Cloud Semgantic Segmentation [[code]](https://github.com/LongguangWang/SparseMask/tree/master/point_cloud_semantic_segmentation)
 
 - Network Architecture
-<p align="center"> <img src="figs/SMPointSeg.png" width="100%"> </p>
+<p align="center"> <img src="figs/SMPointSeg.png" width="80%"> </p>
 
 - Results
-<p align="center"> <img src="figs/results_pc_1.png" width="100%"> </p>
+<p align="center"> <img src="figs/results_pc_1.png" width="80%"> </p>
 
-<p align="center"> <img src="figs/results_pc_2.png" width="100%"> </p>
+<p align="center"> <img src="figs/results_pc_2.png" width="80%"> </p>
 
 ### 2. Singe Image Super-Resolution [[code]](https://github.com/LongguangWang/SMSR)
 
@@ -37,9 +37,9 @@ Pytorch implementation of "Exploring Fine-Grained Sparsity in Convolutional Neur
 <p align="center"> <img src="figs/SMSR.png" width="75%"> </p>
 
 - Results
-<p align="center"> <img src="figs/results_sr_1.png" width="100%"> </p>
+<p align="center"> <img src="figs/results_sr_1.png" width="80%"> </p>
 
-<p align="center"> <img src="figs/results_sr_2.png" width="100%"> </p>
+<p align="center"> <img src="figs/results_sr_2.png" width="80%"> </p>
 
 ### 3. Stereo Matching
 
@@ -47,9 +47,9 @@ Pytorch implementation of "Exploring Fine-Grained Sparsity in Convolutional Neur
 <p align="center"> <img src="figs/SMStereo.png" width="75%"> </p>
 
 - Results
-<p align="center"> <img src="figs/results_stereo_1.png" width="100%"> </p>
+<p align="center"> <img src="figs/results_stereo_1.png" width="80%"> </p>
 
-<p align="center"> <img src="figs/results_stereo_2.png" width="100%"> </p>
+<p align="center"> <img src="figs/results_stereo_2.png" width="80%"> </p>
 
 ## Citation
 ```
