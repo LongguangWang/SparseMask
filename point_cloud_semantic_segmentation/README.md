@@ -7,7 +7,7 @@
 ## Setup
 ### 1. Clone this repository
 ```shell
-git clone https://github.com/LongguangWang/SparseMask && cd SparseMask
+git clone https://github.com/LongguangWang/SparseMask && cd SparseMask/point_cloud_semantic_segmentation
 ```
 
 ### 2. Install the following pacages
